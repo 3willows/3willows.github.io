@@ -1,7 +1,7 @@
 ---
-categories: meta
-date: "2024-06-10T00:00:00Z"
-title: Docs-as-code in theory and in practice
+categories: ['meta']
+date: "2024-06-09T00:00:00Z"
+title: 'Doc-as-Code in theory and practice'
 ---
 
 In this Write-the-Docs London talk on 2 May 2024, speakers shared their experiences with using software tools to automate the publication of their companies’ documentation. 
