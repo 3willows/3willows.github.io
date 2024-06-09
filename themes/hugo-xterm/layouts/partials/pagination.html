@@ -1,0 +1,51 @@
+{{- /* pagination */}}
+{{- $pgTitle := "See more" -}}
+{{- $pgNext := "Next" -}}
+{{- $pgPrev := "Previous" -}}
+{{- $pgNextLink := false -}}
+{{- $pgPrevLink := false -}}
+
+{{- if .IsPage -}}
+  {{- $pgTitle = site.Params.ReadOtherPosts | default "Read other posts" -}}
+
+  {{- with .NextInSection -}}
+    {{- $pgNext = .Title -}}
+    {{- $pgNextLink = .Permalink -}}
+  {{- end -}}
+
+  {{- with .PrevInSection -}}
+    {{- $pgPrev = .Title -}}
+    {{- $pgPrevLink = .Permalink -}}
+  {{- end -}}
+{{- else -}}
+  {{- if .Paginator.HasNext -}}
+    {{- $pgNextLink = .Paginator.Next.URL -}}
+  {{- end -}}
+
+  {{- if .Paginator.HasPrev -}}
+    {{- $pgPrevLink = .Paginator.Prev.URL -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if or $pgNextLink $pgPrevLink -}}
+  <div class="pagination">
+    <div class="pagination-title">
+      <span class="pagination-title-h">{{ $pgTitle }}</span>
+      <hr />
+    </div>
+    <div class="buttons fill">
+      {{- if $pgPrevLink }}
+        <a href="{{ $pgPrevLink }}" class="button">
+          <span class="icon">&lArr;</span>
+          <span class="label">{{ $pgPrev }}</span>
+        </a>
+      {{- end }}
+      {{- if $pgNextLink }}
+        <a href="{{ $pgNextLink }}" class="button right">
+          <span class="label">{{ $pgNext }}</span>
+          <span class="icon right">&rArr;</span>
+        </a>
+      {{- end }}
+    </div>
+  </div>
+{{- end -}}

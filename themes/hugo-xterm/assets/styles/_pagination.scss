@@ -1,0 +1,39 @@
+.pagination {
+  margin: $spacer-largest 0;
+
+  @media print {
+    display: none;
+  }
+
+  &-title {
+    display: flex;
+    text-align: center;
+    position: relative;
+    margin: $spacer-large 0;
+
+    &-h {
+      text-align: center;
+      margin: 0 auto;
+      padding: $spacer-smallest $spacer-normal;
+      font-size: smaller;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      z-index: 1;
+
+      @include themed {
+        background: t($background);
+        color: transparentize(t($text), 0.4);
+      }
+    }
+
+    hr {
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 100%;
+      margin-top: $spacer-normal;
+      z-index: 0;
+    }
+  }
+}

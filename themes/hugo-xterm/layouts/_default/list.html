@@ -1,0 +1,47 @@
+{{- define "main" }}
+  <article class="post">
+    <header class="post-header">
+      {{- if .Title }}
+        <h1>{{ .Title | plainify }}</h1>
+      {{- end }}
+
+      {{- with .Params.Description -}}
+        <p>{{ . }}</p>
+      {{- end -}}
+    </header>
+
+    <div class="post-content">
+      {{- with .Content }}
+        {{ . }}
+      {{- end }}
+
+      {{- /* list content */}}
+      <h2>See</h2>
+
+      {{- /* list items */}}
+      {{- if eq .Params.list_type "docs_list" }}
+        {{- $paginator := .Paginate .Pages -}}
+        <ul>
+          {{- range $paginator.Pages }}
+            <li>
+              {{- /* list item */ -}}
+              <a href="{{ .Permalink }}">
+                {{- if .Title -}}
+                  {{- .Title | markdownify -}}
+                {{- else -}}
+                  {{- .File.TranslationBaseName | markdownify -}}
+                {{- end -}}
+              </a>
+            </li>
+          {{- end -}}
+        </ul>
+      {{- else }}
+        {{- partial "post-entries.html" . -}}
+      {{- end }}
+    </div>
+
+    <footer class="post-footer">
+      {{- partial "pagination.html" . -}}
+    </footer>
+  </article>
+{{- end }}

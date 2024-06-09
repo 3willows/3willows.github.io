@@ -1,0 +1,60 @@
+/* syntax highlighted code layout */
+div.highlight-wrapper {
+  margin: $spacer-large 0;
+  border-radius: $spacer-2;
+  border: $spacer-1 solid;
+
+  @include themed {
+    border-color: t($background-brighter);
+  }
+}
+
+div.highlight-wrapper div.highlight-toolbar {
+  display: flex;
+  border-bottom: $spacer-1 solid;
+
+  @include themed {
+    color: t($text-brighter);
+    background: t($background-grey);
+    border-color: t($background-brighter);
+  }
+
+  .item {
+    padding: 0 $spacer-small;
+
+    .label {
+      @include themed {
+        color: t($text-duller);
+      }
+
+      @media ($phone) {
+        display: none;
+      }
+    }
+
+    &.right {
+      margin-left: auto;
+    }
+  }
+}
+
+div.highlight .chroma {
+  margin: 0;
+  padding: $spacer-smallest 0;
+  overflow: auto;
+}
+
+div.highlight .chroma code {
+  color: inherit;
+  background: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+div.highlight .chroma .line span.cl.wrap {
+  white-space: pre-wrap;
+}
+
+div.highlight .chroma .cl {
+  padding-right: $spacer-small;
+}

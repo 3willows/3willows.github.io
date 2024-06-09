@@ -1,0 +1,47 @@
+:root {
+  --r-code-font: #{$font-family-mono};
+  --r-heading-font: #{$font-family-title};
+  --r-main-font-size: #{$font-size};
+  --r-main-font: #{$font-family-normal};
+
+  /* FIXME doesn't work in light theme */
+  @include themed {
+    --r-background-color: t($background);
+    --r-heading-color: t($text);
+    --r-main-color: t($text);
+    --r-link-color: t($text-links);
+    --r-link-color-dark: t($text-links);
+    --r-link-color-hover: t($text);
+  }
+}
+
+/* HACK use this until reveal.js theme colors are fixed */
+.reveal a {
+  @include themed {
+    color: t($text-links);
+  }
+}
+
+.reveal {
+  width: 100%;
+  height: $spacer-large * 25;
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.header-left,
+.footer-left {
+  position: absolute;
+  left: 0%;
+  margin: $spacer-normal $spacer-normal;
+}
+
+.header-left {
+  top: 0%;
+}
+
+.footer-left {
+  bottom: 0%;
+}

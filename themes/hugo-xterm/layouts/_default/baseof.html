@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="{{- site.Language -}}">
+  <head>
+    {{- partial "head/base.html" . -}}
+    {{- partial "head/style.html" . -}}
+    {{- if templates.Exists "partials/extend_head.html" -}}
+      {{- partial "extend_head.html" . -}}
+    {{- end -}}
+  </head>
+
+  <body>
+    {{- $container := "container" -}}
+    {{- if site.Params.fullWidthTheme -}}
+      {{- $container = print $container " full" -}}
+    {{- else if site.Params.centerTheme -}}
+      {{- $container = print $container " center" -}}
+    {{- end -}}
+
+    {{- /* theme container */}}
+    <div class="theme-container">
+      {{- /* container */}}
+      <div class="{{- $container -}}">
+        {{- /* site header */}}
+        <header class="site-header">
+          {{- block "header" . -}}
+            {{- partial "header.html" . -}}
+          {{- end -}}
+        </header>
+
+        {{- /* site main */}}
+        <main class="site-main">
+          {{- block "main" . -}}
+            {{ if .Title -}}
+              <h1 class="post-title">{{ .Title | plainify }}</h1>
+            {{- end -}}
+
+            {{- /* site main content */}}
+            {{ .Content }}
+          {{- end -}}
+          {{- /* end main content */}}
+        </main>
+
+        {{- /* site footer */}}
+        <footer class="site-footer">
+          {{- block "footer" . -}}
+            {{- partial "footer.html" . -}}
+          {{- end -}}
+        </footer>
+      </div>
+    </div>
+
+    {{- partial "scripts/base.html" . -}}
+    {{- if templates.Exists "partials/extend_footer.html" -}}
+      {{- partial "extend_footer.html" . -}}
+    {{- end -}}
+  </body>
+</html>

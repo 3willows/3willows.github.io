@@ -1,0 +1,110 @@
+.gitinfo,
+.breadcrumbs {
+  font-size: $font-size-smaller;
+  font-style: italic;
+}
+
+.breadcrumbs {
+  width: fit-content;
+  border-bottom: $spacer-1 solid;
+
+  @include themed {
+    border-color: t($accent);
+  }
+}
+
+.gitinfo {
+  margin: $spacer-normal 0;
+  border-top: $spacer-1 solid;
+
+  @include themed {
+    color: t($text-duller);
+    border-color: t($accent);
+  }
+
+  @media print {
+    margin: 0;
+
+    a {
+      &::after {
+        display: none;
+      }
+    }
+
+    p {
+      margin: $spacer-small 0 0 0;
+      font-size: $font-size-smaller;
+    }
+  }
+}
+
+.theme-toggle {
+  cursor: pointer;
+  padding: 0;
+}
+
+.theme-toggler {
+  fill: currentcolor;
+}
+
+.navbar {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  &__first {
+    font-weight: $font-bold;
+    display: block;
+  }
+
+  &__separator {
+    flex-grow: 1;
+    border-top: $spacer-2 dotted;
+
+    @include themed {
+      border-color: t($accent);
+    }
+  }
+
+  &__last {
+    display: block;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    > li {
+      flex: 0 0 auto;
+      padding-left: $spacer-small;
+      display: flex;
+      justify-content: center;
+    }
+
+    &.borders {
+      > li {
+        padding: $spacer-smallest $spacer-small;
+        border: $spacer-2 dotted;
+        margin-right: $spacer-2 * -1;
+
+        @include themed {
+          border-color: t($accent);
+        }
+      }
+    }
+  }
+}
+
+.site-header {
+  .navbar {
+    margin-bottom: $spacer-large2;
+    font-size: $font-size-larger;
+  }
+
+  @media print {
+    display: none;
+  }
+}

@@ -1,0 +1,76 @@
+{{- /* site build info */}}
+<p class="buildinfo">
+  {{- /* site build timestamp */}}
+  <time datetime="{{ now.Format " 2006-01-02 15:04:05 MST" }}">Site built on: {{ now.Format "2006-01-02 15:04:05 MST"
+    }}</time>
+
+  {{- with site.Params.git.last_commit -}}
+  {{- $commitUrl := "" -}}
+  {{- if (isset site.Params "git_info") -}}
+  {{- $git_host := site.Params.git_info.host -}}
+  {{- $git_user := site.Params.git_info.user -}}
+  {{- $git_repo := site.Params.git_info.repo -}}
+  {{ $commitUrl = printf "https://%s.com/%s/%s/-/commit/%s" $git_host $git_user $git_repo .hash }}
+  {{- end -}}
+  <span> from commit: </span>
+
+  {{- /* code */}}
+  <code>
+      {{- if eq $commitUrl "" }}
+        #{{ .short_hash }} |
+        {{ .subject }}
+      {{- else }}
+        <a href="{{ $commitUrl }}">
+          #{{ .short_hash }} |
+          {{ .subject }}
+        </a>
+      {{- end }}
+    </code>
+  {{- end -}}
+  {{/* gitinfo */}}
+</p>
+
+{{- /* site copyright */}}
+<div class="copyright">
+  <p>
+    {{- if site.Params.Copyright -}}
+    {{ site.Params.Copyright | safeHTML }}
+    {{ now.Year }}
+    {{- end -}}
+
+    {{- if site.Params.CopyrightUserUrl -}}
+    <span>&nbsp;</span>
+    {{- /* site copyright url */ -}}
+    <a href="{{ site.Params.CopyrightUserUrl }}">
+      {{- if site.Params.CopyrightUserText -}}
+      {{- site.Params.CopyrightUserText -}}
+      {{- else -}}
+      {{- site.Params.CopyrightUserUrl -}}
+      {{- end -}}
+    </a>
+    {{- end -}}
+  </p>
+
+  {{- /* site footer links */}}
+  <nav class="navbar">
+    <ul class="navbar__list">
+      <li><a href="{{ absURL " posts/index.xml" }}">RSS</a></li>
+      <li><a href="{{ absURL " sitemap.xml" }}">Sitemap</a></li>
+      {{- $gitRepoUrl := "" -}}
+      {{- if (isset site.Params "git_info") -}}
+      {{- $git_host := site.Params.git_info.host -}}
+      {{- $git_user := site.Params.git_info.user -}}
+      {{- $git_repo := site.Params.git_info.repo -}}
+      {{ $gitRepoUrl = printf "https://%s.com/%s/%s" $git_host $git_user $git_repo }}
+      {{- end -}}
+
+      {{- if not (eq $gitRepoUrl "") }}
+      <li><a href="{{ $gitRepoUrl }}">Source</a></li>
+      {{- end }}
+    </ul>
+  </nav>
+</div>
+
+{{- /* site theme info */}}
+<p class="themeinfo">Powered by <a href="https://gohugo.io">Hugo</a>, using theme <a
+    href="https://manid2.github.io/hugo-xterm/">Hugo Xterm</a>.</p>

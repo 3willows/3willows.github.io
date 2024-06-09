@@ -1,0 +1,41 @@
+{{- $pageName := "Page" -}}
+{{- if eq .Type "posts" -}}
+  {{- $pageName = print "Article" | plainify -}}
+{{- else -}}
+  {{- with .File -}}
+    {{- if eq .TranslationBaseName "cv" -}}
+      {{- $pageName = print .TranslationBaseName | upper -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- with .GitInfo -}}
+  {{- $commitUrl := "" -}}
+  {{- if (isset site.Params "git_info") -}}
+    {{- $git_host := site.Params.git_info.host -}}
+    {{- $git_user := site.Params.git_info.user -}}
+    {{- $git_repo := site.Params.git_info.repo -}}
+    {{ $commitUrl = printf "https://%s.com/%s/%s/-/commit/%s" $git_host $git_user $git_repo .Hash }}
+  {{- end -}}
+
+  {{- /* gitinfo */}}
+  <div class="gitinfo">
+    <p>
+      {{- /* page name */}}
+      {{ $pageName }} last updated on {{ .AuthorDate }} by commit
+      {{- /* code */}}
+      <code>
+        {{- if eq $commitUrl "" }}
+          #{{ .AbbreviatedHash }} |
+          {{ .Subject }}
+        {{- else }}
+          <a href="{{ $commitUrl }}">
+            #{{ .AbbreviatedHash }} |
+            {{ .Subject }}
+          </a>
+        {{- end }}
+      </code>
+    </p>
+  </div>
+{{- end -}}
+{{/* gitinfo */}}

@@ -1,0 +1,112 @@
+/* Buttons */
+button,
+.button {
+  align-items: center;
+  border-radius: $spacer-small;
+  border: $spacer-1 solid;
+  cursor: pointer;
+  display: flex;
+  font-weight: $font-bold;
+  padding: $spacer-small $spacer-normal;
+  text-align: center;
+
+  @include themed {
+    background: t($button-background);
+    border-color: t($accent);
+
+    &:hover {
+      background: transparentize(t($button-background), 0.6);
+      text-decoration: none;
+    }
+  }
+
+  @media print {
+    display: none;
+  }
+
+  &:active {
+    transform: scale(0.95);
+    transition: transform 0.2s ease;
+  }
+
+  /* button variants */
+  &.outline,
+  &.transparent {
+    font-weight: $font-normal;
+    background: none;
+
+    @include themed {
+      color: t($text-brighter);
+
+      &:hover {
+        background: transparentize(t($button-background), 0.1);
+      }
+    }
+  }
+
+  &.transparent {
+    border: none;
+  }
+
+  &.outline.brighter {
+    @include themed {
+      border-color: t($background-brighter);
+    }
+  }
+
+  /* button content align right */
+  &.right {
+    justify-content: flex-end;
+  }
+
+  /* button label */
+  .label {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  /* button icon */
+  .icon {
+    margin-right: $spacer-smallest;
+
+    &.right {
+      margin: 0 0 0 $spacer-smallest;
+    }
+  }
+}
+
+a.button {
+  @media print {
+    display: initial;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Buttons container */
+.buttons {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  column-gap: $spacer-small;
+
+  @media ($phone) {
+    flex-direction: column;
+    row-gap: $spacer-small;
+  }
+
+  /* Buttons filling the container */
+  &.fill {
+    button,
+    .button {
+      flex: 1 0 0;
+
+      @media ($phone) {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{{- define "main" -}}
+  <article class="post">
+    <header class="post-header">
+      <div class="post-title row">
+        <h1 class="cv-title">
+          <a href="{{ .Permalink }}">
+            {{- if .Params.name }}
+              {{- .Params.name }}
+            {{- else if .Title }}
+              {{- .Title }}
+            {{- else }}
+              {{- .File.TranslationBaseName }}
+            {{- end }}
+          </a>
+        </h1>
+
+        {{- with .Params.contact }}
+          <address class="cv-contacts">
+            <div class="col">
+              <div>{{ .phone }}</div>
+              <div>{{ .email }}</div>
+            </div>
+          </address>
+        {{- end }}
+      </div>
+
+      {{- with .Params.Description }}
+        <p class="cv-description">{{ . }}</p>
+      {{- end }}
+    </header>
+
+    {{- with .Content }}
+      <div class="post-content cv-content">
+        {{ . }}
+      </div>
+    {{- end }}
+
+    {{- if .GitInfo -}}
+      <footer class="post-footer">
+        {{- partial "gitinfo.html" . -}}
+      </footer>
+    {{- end -}}
+  </article>
+{{- end -}}

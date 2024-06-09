@@ -1,0 +1,16 @@
+@import "variables";
+@import "themes";
+
+/* components */
+@import "buttons";
+@import "header";
+@import "menu";
+@import "main";
+@import "post";
+@import "pagination";
+@import "footer";
+
+/* code syntax highlight */
+@import "gen_syntax";
+@import "syntax";
+@import "slides";

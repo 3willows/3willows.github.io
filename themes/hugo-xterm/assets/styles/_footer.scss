@@ -1,0 +1,39 @@
+.site-footer {
+  margin-top: $spacer-large2;
+  border-top: $spacer-1 solid;
+
+  @include themed {
+    border-color: t($accent);
+    color: t($text-duller);
+  }
+
+  @media print {
+    display: none;
+  }
+}
+
+.themeinfo,
+.buildinfo {
+  font-size: $font-size-smaller;
+  margin: $spacer-small 0;
+}
+
+.copyright {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: $spacer-normal 0;
+
+  > p {
+    margin: 0;
+  }
+
+  .navbar {
+    &__list {
+      > li {
+        border: none;
+      }
+    }
+  }
+}
