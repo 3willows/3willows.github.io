@@ -1,0 +1,72 @@
+---
+categories: Javascript
+date: "2024-04-03T00:00:00Z"
+title: Promise(), not promise
+---
+
+Quick test: what do these code snippets do? 
+
+```js
+const a = new Promise(function (a) {
+  a
+})
+
+const b = new Promise(function (b) {
+  b("success")
+})
+
+const c = new Promise(function (a, b) {
+  b("failure")
+})
+
+const d = Promise.resolve("success")
+
+const e = Promise.reject("failure")
+
+const f = new Promise(function (a, b) {
+  a("success")
+  b("failure")
+})
+
+const g = new Promise(function (a, b) {
+  b("failure")
+  a("success")
+})
+
+const h = new Promise(function (a, b) {
+  throw new Error()
+})
+
+const i = new Promise(function (a, b) {
+  a()
+})
+
+const j = new Promise(function (a, b) {
+  b()
+})
+
+const k = (number) => {
+  return new Promise(function (a, b) {
+    a(number * 2)
+  })
+}
+```
+
+Check by opening the console in your browser and test with e.g.
+
+```js
+x.then(console.log).catch(alert)
+```
+
+Some points that were consolidated for me after the exercise:
+
+- "Promise" is not the same as "promise". What I need to reach for is the "Promise()" constructor: "promise" is just the conventional name assigned to the promise object.
+
+- > Promise() can only be constructed with new. Attempting to call it without new throws a TypeError. --- [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise#syntax)
+
+- Promise() takes an executor as its paramater. The executor receives two functions as parameters: resolveFunc (1st parameter) and rejectFunc (2nd parameter).
+
+Sources:
+
+- [Javascript.Info](https://javascript.info/promise-basics)
+- [Jye Lewis's explanation on his blog](https://jyelewis.com/blog/2021-10-01-javascript-promises-the-history/)

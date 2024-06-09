@@ -1,0 +1,86 @@
+---
+categories: Javascript
+date: "2024-04-23T00:00:00Z"
+title: Convert HTML to Word
+---
+
+**Demo**: download button [here](https://3willows.github.io/barAdmission/#/info) for laptop and desktop
+
+**Background**
+
+There is an issue with [Barrister Admission Bundle](https://3willows.github.io/barAdmission/#/) I have wanted to solve for some time.
+
+I wanted to make a website where users (pupil-barristers) could enter all required information at once, and then download a Word document.
+
+The Word document would have all the information in the right place. But it also needs to be modifiable (as users probably have their own style preferences).
+
+This turned out to be harder than I thought. After some Googling, I found a [solution](https://phppot.com/javascript/how-to-export-html-to-word-document-with-javascript/) that _almost_ worked.
+
+The problem is that after users edits the Word document, they cannot save it (easily). Word complains that the file cannot be saved. The user then needs to manually convert the file from .doc to the .docx format.
+
+This works well enough for me, but is not an acceptable user experience!
+
+**Potential solutions**
+
+Over the course of today, I explored these potential solutions.
+
+***Pandoc-server*** Pandoc is a famous tool made by a professional philosopher, John MacFarlane, at UC Berkley. It is a tool that is first and foremost intended to be used on the command line. But there is also a [pandoc-server](https://pandoc.org/pandoc-server.htmlfunction) which is intended for use on web-servers.
+
+There is a [demo](https://pandoc.org/try/) that is very impressive. Pandoc is also a very well regarded and reliable (it even has its own [Wikipedia page](https://en.wikipedia.org/wiki/Pandoc))!
+
+However, Pandoc is itself written in Haskell. Judging by its name, pandoc-server needs to work in a server, where I need to use the executable (which should be a binary file(?)) as a CGI (common gateway interface) file (according to the [docs](https://pandoc.org/pandoc-server.html#description)).
+
+This a bit too advanced for me, so I shelved this after reading a bit into the background.
+
+***NPM packages*** such as [redocx](https://stackoverflow.com/a/59303847/19767032), [html-to-docx](https://www.npmjs.com/package/html-to-docx), [html-docx-js](https://github.com/evidenceprime/html-docx-js) and [node-pandoc](https://www.npmjs.com/package/node-pandoc).
+
+But the problem with these packages is that they seem to be a few years old, and their demos often don’t work any more (which do not inspire a great deal of confidence).  It seems [html-to-docx](https://stackoverflow.com/a/58392737/19767032) works only on a Microsoft machine, while [redocx](https://github.com/nitin42/redocx/tree/master/docs)
+
+***[jQuery-Word-Export](https://github.com/markswindoll/jQuery-Word-Export)*** This is an even older project (over 10 years old)! But it has a [demo](https://markswindoll.github.io/jquery-word-export/) that still does work.
+
+More importantly, the [source code](https://github.com/markswindoll/jQuery-Word-Export/blob/master/jquery.wordexport.js) is just 84 lines, and many of them seem to be dealing with the issues with images (which I need not handle)!
+
+**Diggning into jQuery-Word-Export**
+
+Even though I have no experience of jQuery (beyond flipping through a book about it for around 30 minutes), I thought I would give this a go.
+
+Integrating jQuery with React turned out to be slightly challenging.
+
+The ideas are so different: for example, how should I select an element with (say) an ID (with the # sign) across files? There are probably good ways of solving this, but I decided to go in a different direction.
+
+Digging into the source code, I realised the crucial ideas are only:-
+
+- Placing the html firmly within the “Mime-Version: 1.0\nContent-Base:…” heading to the document, i.e.
+
+```js
+var fileContent =
+  static.mhtml.top.replace(
+    "_html_",
+    static.mhtml.head.replace("_styles_", styles) +
+      static.mhtml.body.replace("_body_", markup.html())
+  ) + mhtmlBottom
+```
+
+- Using Blob to effect a conversion of the data format: i.e.
+
+```js
+var blob = new Blob([fileContent], {
+  type: "application/msword;charset=utf-8",
+})
+```
+
+In my earlier code, when I open the resulting Word file with VS Code, I could still see HTML elements such as `<div>` `<p>` etc.
+
+But with jQuery-Word-Export, the body of the resulting Word document has been transformed into long and indecipherable ASCII characters, suggesting some substantial changes took place when the HTML is used to create a Blob object.
+
+**Open questions**
+
+With these ideas in mind, I decided to pick apart the jQuery function in jQuery-Word-Export and translate it to pure JavaScript.
+
+[MDN](https://developer.mozilla.org/en-US/docs/Web/API/Blob) tells me that Blob is just a general browser feature: so this rewrite should be possible.
+
+After some trial and error, I got it working! The name of the resulting file is apparently “Single File Webpage (.mht)”.
+
+But at least on my computer it has all the functionalities of an ordinary Word document, and users can if they so which save it as a .doc or .docx file.
+
+There are still many open questions on my mind. What exactly is Blob doing? What is “Single File Webpage (.mht)” exactly?

@@ -1,0 +1,32 @@
+---
+categories: Javascript
+date: "2024-03-30T00:00:00Z"
+title: Why both capture and bubble events in Javascript dom?
+---
+
+***Historical accident***
+
+The answer seems to be historical accident, not intentional design.
+
+>Back in the old days, Netscape advocated event capturing, while Microsoft promoted event bubbling. Both are part of the W3C [Document Object Model Events](http://www.w3.org/TR/DOM-Level-2-Events/events.html) standard (2000).
+>-- <cite>[Arun P Johny](https://stackoverflow.com/questions/4616694/what-is-event-bubbling-and-capturing)</cite>
+
+
+If this is correct, the events of the browser wars in the 1990s are still shaping Javavscript into the 2020s!
+
+In a way, this is unsurprising: backwards compatibility is important, which means features are often in a way that seem inelegant in hindsight.
+
+**_Context_**
+
+In JS DOM, a click event affects HTML elements not once, but twice. For example, if within the `<body>`, there is a `<p>`, and within the `<p>`, there is a `<button>`, a single click event on the `<button> `will be travel through the <body> as follows:-
+
+```
+// capturing
+<button> ⇒ <p> ⇒ <body> 
+
+//bubbling
+<body> ⇒ <p>⇒ <button>
+
+```
+
+It is not apparent why we need both capturing and bubbling. It seems in most cases one can simply choose one or the other for the purpose of listening to events, cf.: [MisterMister](https://stackoverflow.com/questions/2661199/event-capturing-vs-event-bubbling)

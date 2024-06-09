@@ -1,0 +1,25 @@
+---
+categories: CSS
+date: "2024-04-11T00:00:00Z"
+title: Dao of Web Design
+---
+
+I fell in love with the technology of CSS recently, having obsessively followed a YouTuber (and CSS guru) called Kevin Powell.
+
+One of the articles that Kevin recommends is [the Dao of Web Design](https://alistapart.com/article/dao/). 
+
+In essence, the article argues that web as a medium is fundamentally different from printed media because the layout of a webpage has to work on so many different devices:
+
+- mobile phone, 
+- tablets, 
+- laptops, 
+- Desktops
+
+And also on different browswers with customisation such as [dark reader](https://darkreader.org/) or screen readers.
+
+A print designer can control  the size and quality of the paper on which the design is displayed: a web designer cannot.
+
+But this is not necessarily a disadvantage.  The fluidity of webpage display should instead lead us to rethink what we are trying to achieve when we design web media.  
+
+It is no longer enough to think about how some information is presented once, and then forget about it once it is published.  Instead core principles need to be extracted so that the design will give a consistent experience across different formats (and be easy to maintain and modify as time goes on). 
+

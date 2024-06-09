@@ -1,0 +1,38 @@
+---
+categories: Javascript
+date: "2024-03-22T00:00:00Z"
+title: Promises always return promises
+---
+
+I was trying to make a Promise object return an ordinary value (e.g. a number or a string), but failed.
+
+And then I realised that Promises are never intended to return values other than Promises.  Otherwise how can one “chain” then with .thens?
+
+I can do what I wanted to do with this instead.
+
+ ```js
+
+// declare a variable without initialising it
+
+let newValue
+
+// declare and initialise a promise
+
+const myPromise = new Promise((resolve, reject) => {
+resolve("foo");
+});
+
+// assign the value of the resolved promise to the variable
+
+myPromise.then(value => {newValue = value})
+
+(Carriage return)
+
+console.log(newValue)
+
+```
+
+Sources:
+[StackOverFlow on why Promises always return Promises](
+ https://stackoverflow.com/questions/57504663/why-does-a-promise-return-an-object-promise-even-if-i-put-return-explicitly)
+
