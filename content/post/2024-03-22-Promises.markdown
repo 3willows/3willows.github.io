@@ -1,5 +1,5 @@
 ---
-categories: Javascript
+categories: ['Javascript']
 date: "2024-03-22T00:00:00Z"
 title: Promises always return promises
 ---

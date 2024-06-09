@@ -1,5 +1,5 @@
 ---
-categories: Javascript
+categories: ['Javascript']
 date: "2024-03-30T00:00:00Z"
 title: Why both capture and bubble events in Javascript dom?
 ---

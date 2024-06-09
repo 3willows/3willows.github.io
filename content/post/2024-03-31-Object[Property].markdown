@@ -1,5 +1,5 @@
 ---
-categories: Javascript
+categories: ['Javascript']
 date: "2024-03-31T00:00:00Z"
 title: object.property v. object[property]
 ---

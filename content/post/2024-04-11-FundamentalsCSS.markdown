@@ -1,5 +1,5 @@
 ---
-categories: CSS
+categories: ['CSS']
 date: "2024-04-11T00:00:00Z"
 title: Fundamentals in CSS
 ---

@@ -1,5 +1,5 @@
 ---
-categories: meta
+categories: ['meta']
 date: "2024-04-27T00:00:00Z"
 title: 'Slow Productivity: some book notes'
 ---

@@ -1,5 +1,5 @@
 ---
-categories: meta
+categories: ['meta']
 date: "2024-03-23T00:00:00Z"
 title: Can someone tinker her way into programming in the 2020s?
 ---

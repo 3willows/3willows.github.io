@@ -1,5 +1,5 @@
 ---
-categories: Javascript
+categories: ['Javascript']
 date: "2024-03-24T00:00:00Z"
 title: In Array.sort()’s compareFn, the order of a and b doesn't matter
 ---

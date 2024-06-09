@@ -2,4 +2,4 @@ baseURL:
 disablePathToLower: true
 languageCode: en-us
 title: Passing thoughts
-theme: hello-friend-ng
+theme: hugo-xterm

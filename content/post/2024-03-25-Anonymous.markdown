@@ -1,5 +1,5 @@
 ---
-categories: Javascript
+categories: ['Javascript']
 date: "2024-03-25T00:00:00Z"
 title: Anonymous functions have no reference in memory
 ---

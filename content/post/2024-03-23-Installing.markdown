@@ -1,5 +1,5 @@
 ---
-categories: meta
+categories: ['meta']
 date: "2024-03-23T00:00:00Z"
 title: Installing Jekyll on a Mac in March 2024
 ---

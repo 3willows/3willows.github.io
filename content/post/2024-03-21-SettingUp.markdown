@@ -1,5 +1,5 @@
 ---
-categories: meta
+categories: ['meta']
 date: "2024-03-21T14:04:37Z"
 title: Setting up the blog
 ---
