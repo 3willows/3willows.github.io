@@ -1,0 +1,54 @@
+---
+categories: ['meta']
+date: "2024-06-10"
+title: 'You cannot name a MongoDB collection "hello"'
+---
+
+(A draft StackOverlow questioned that I answered for myself)
+
+***Draft question***
+
+I am using mongosh version 2.26 on iTerm2 (Build 3.5.0) on a Mac.
+
+I am starting to explore MongoDB with the aim of setting up a MERN website.
+
+When I run `mongosh`, the Mongo shell correctly opens.
+
+Within the Mongo shell, I switch to and create a new db, e.g. one called random, by `> use random`.
+
+`$ show collections` correctly shows no collection.
+
+I then run `db.new.insertOne({name: "name"})`.  A document is correctly created under the `new` collection.
+
+But when I run `db.hello.insertOne({name: "name"})`, I get the error
+
+`TypeError: db.hello.insertOne is not a function`
+
+This is particularly bizarre because if I run `db.createCollection("hello")`, I do succeed in creating a collection called "hello".
+
+[MongoDB documentation](https://www.mongodb.com/docs/manual/reference/limits/#naming-restrictions) provides,
+
+
+> Restriction on Collection Names
+>
+> Collection names should begin with an underscore or a letter character, and cannot:
+> 
+>- contain the $.
+>- be an empty string (e.g. "").
+>- ontain the null character.
+>- begin with the system. prefix. (Reserved for internal use.)
+> 
+> If your collection name includes special characters, such as the underscore character, or begins with numbers, then to access the collection use the db.getCollection() method in mongosh or a similar method for your driver.
+>
+
+I don't see how I am in breach.
+
+I also don't think the issue is I have a collection in another database called "hello".  I made another db called "new", and made a collection within it also called "new".  No problems there.
+
+So what might explain the titled error?
+
+***Answer***
+
+Improbable as it may sound: ["hello"](https://www.mongodb.com/docs/manual/reference/command/hello/) is actually a standalone method in MongoDB.
+
+This can be shown if you run `db.hello()`.
