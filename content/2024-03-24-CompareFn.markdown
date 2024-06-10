@@ -8,8 +8,7 @@ MDN documentation on Array.prototype.sort() says of the the optional CompareFn,
 
 >A function that determines the order of the elements. The function is called with the following arguments:
 >
->- ```a``` The first element for comparison. Will never be `undefined`.
->
+>- ``a`` The first element for comparison. Will never be `undefined`.
 >- ```b``` The second element for comparison. Will never be `undefined`.
 >
 >It should return a number where:
