@@ -1,5 +1,4 @@
 baseURL: 
-disablePathToLower: true
 languageCode: en-us
 title: 3willows
 theme: hugo-xterm
