@@ -55,6 +55,7 @@
   <nav class="navbar">
     <ul class="navbar__list">
       <li><a href="https://github.com/3willows">Github</a></li>
+      <li><a href="{{ absURL " posts/index.xml" }}">RSS</a></li>
       <!-- <li><a href="{{ absURL " sitemap.xml" }}">Sitemap</a></li> -->
       {{- $gitRepoUrl := "" -}}
       {{- if (isset site.Params "git_info") -}}
