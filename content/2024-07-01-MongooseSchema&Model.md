@@ -1,8 +1,10 @@
 ---
 categories: ['db']
 date: "2024-07-01"
-title: "Schema and Model in Mongoose"
+title: "Schema and Model in Mongoose (1 of 2)"
 ---
+
+The point of Schema
 
 Initially I was surprised that the code below logs anything out at all.
 
