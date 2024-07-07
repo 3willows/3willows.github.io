@@ -1,6 +1,6 @@
 ---
 categories: ['meta']
-date: "2024-07-06"
+date: "2024-07-07"
 title: "From Passport.js to Project Mood: diary of a day's reading"
 ---
 
