@@ -4,6 +4,10 @@ date: "2024-07-19"
 title: "Mailgun quick start: with Express on local machine"
 ---
 
+The relevant code can be found in this [repo](https://github.com/3willows/Mailgun-local-quick-start-2024).
+
+---
+
 After attending a meet-up, I was told of a volunteering opportunity to improve the group website.
 
 Specifically, at present, there was no functionality for the website to send out a confirmation email after someone signs up.
