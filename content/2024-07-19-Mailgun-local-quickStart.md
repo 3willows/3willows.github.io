@@ -12,11 +12,11 @@ The tech lead who put the website together in a few hours says that a good tool 
 
 So I decided to give Mailgun a quick spin, to see if I am up for the task.
 
-#### 1 Signing up for a free plan
+### 1 Signing up for a free plan
 
 The first hurdle was whether a free tier is available as of July 2024. The non-obvious answer is "yes": you just need to sign up using [this page](https://www.mailgun.com/pricing/) as opposed to the more obvious `Get Started for Free` button on the [homepage](https://www.mailgun.com/).
 
-#### 2 Quick start example for Node: the hurdle
+### 2 Quick start example for Node: the hurdle
 
 The "Getting Started" guide on the Mailgun website is easy to follow, until I reached the stage of the quick start example for Node.
 
@@ -51,7 +51,7 @@ mg.messages
 
 The difficulty (as explained by [this SO question](https://stackoverflow.com/questions/78754430/unauthorized-error-by-mailgun-using-node-js-and-mailgun-js-package/78766954#78766954)) is knowing exactly what "other content" needs to be changed. I was stuck on that for 10-20 minutes myself.
 
-#### 2 Quick start example for CURL
+### 2 Quick start example for CURL
 
 To troubleshoot, I took a detour and tried the CURL example (below) instead,
 
@@ -67,7 +67,7 @@ curl -s --user 'api:YOUR_API_KEY' \
 
 For `curl`, I only had to change "YOUR_API_KEY" and the "to address" to send out an email. This gave me comfort that Mailgun was working as expected.
 
-#### 3 Quick start example for Node: the solution
+### 3 Quick start example for Node: the solution
 
 As I explain in my [SO answer](https://stackoverflow.com/a/78766954/19767032), the first parameter to `mg.messages.create` is the `domain` as per [mailgun.js docs](https://github.com/mailgun/mailgun.js/?tab=readme-ov-file#create).
 
@@ -75,7 +75,7 @@ So that needs to be changed to the sandbox domain as well.
 
 Incidentally, to access the api key from `.env`, I ran `node --env-file=.env index.js`: I used to require the `dotenv` module instead in `index.js`, but this seems to have fallen out of favour.
 
-#### 4 Wiring up to a webpage with Express
+### 4 Wiring up to a webpage with Express
 
 The next step after the Node quickstart example is to wire Mailgun up to an Express App.
 
@@ -99,7 +99,7 @@ I then did the following (not in chronological order):
 
 With these tweaks, I got the send mail feature to work with the address bar (i.e. by typing "http://localhost:3030/submit/[email address]" to send a get request to `/submit/:mail`).
 
-#### 5 Fixing jade/pug
+### 5 Fixing jade/pug
 
 I turn then to fixing jade/pug page (jade has been renamed to pug after the Mailgun tutorial was published in 2022).
 
