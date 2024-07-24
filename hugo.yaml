@@ -1,5 +1,5 @@
 baseURL: 
 languageCode: en-us
 title: Jasper's technical blog 
-theme: hugo-xterm
+theme: fluency 
 enableRobotsTXT: true
