@@ -14,13 +14,13 @@ The "Log in" page has two buttons: "Sign In" and "Sign Up".
 
 Because the "Sign in" button is green, I clicked on it without much thought.  
 
-But, without anyone signed up, no one can possibly sign in.  A sensible error message, "Could not authenticate user", appears.
+But, with no signed up, no one can sign in.  A sensible error message, "Could not authenticate user", appears.
 
 So far, so good.  A quick back paddle to "sign up" solves the problem.
 
 But very soon, even the "sign up" button fails, returning the exact same error, "Could not authenticate user".
 
-I was baffled.  Is it the password security policy?  Something to do with my earlier steps?  My having put parenthesis around the Supabase URL and API key?
+I was baffled.  Is it the password security policy?  Something to do with my earlier steps?  My having put parentheses around the Supabase URL and API key?
 
 None of these seems to explain the problem.  I was further confused when, creating everything afresh (including destroying and creating a new Supabase project), the sign up function worked again.
 
