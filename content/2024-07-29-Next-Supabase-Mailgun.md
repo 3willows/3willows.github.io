@@ -14,7 +14,9 @@ It is also not hard to deploy [Mailgun on a local machine](https://3willows.gith
 
 But snags begin to appear when I put everything together.
 
-When I modified the Next.js and Supabase repo to incorporate Mailgun, a mysterious difference appeared between the local environment and the deployed version.
+When I modified the Next.js and Supabase repo to incorporate Mailgun, a mysterious difference appeared between the local environment and the deployed version.  It didn't help that the only tutorials I could find on a quick Google were using the older "mailgun-js" npm module, which is subtly different from the current  "mailgun.js" module: so there were 30-40 minutes where I just had to bat away error messages one-by-one.
+
+(This was however a good introduction to the importance of "use server": something my eyes glazed over before.)
 
 I could dig into it and find out more, but  [Vercel's documentation](https://vercel.com/guides/sending-emails-from-an-application-on-vercel) does not mention Mailgun as one of the recommended providers.  Which made me wonder at one point whether I should jump ship altogether.
 
