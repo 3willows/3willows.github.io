@@ -26,7 +26,7 @@ Which was impressive.
 
 This image came in handy when I was creating my agent, with a view of feeding it my (then unsolved) [SO question](https://stackoverflow.com/questions/78812601/env-file-in-next-js-changes-the-behaviour-of-mailgun-js-solved).  The image is already there for selection when I was asked to give an image to my agent.
 
-There was a slight hiccup in the set-up, however.  I was asked to select a prompt for the agent, but could not find any.  A quick Google later, I back-paddled and created [my first prompt](https://promptbros.ai/prompt/clz8p5epr00018t79pgio3y4z) first and used it to create [my first agent](https://promptbros.ai/prompt/clz8p5epr00018t79pgio3y4z).
+There was a slight hiccup in the set-up, however.  I was asked to select a prompt for the agent, but could not find any.  A quick Google later, I back-paddled and created [my first prompt](https://promptbros.ai/prompt/clz8p5epr00018t79pgio3y4z) first and used it to create [my first agent](https://promptbros.ai/agent/clz8oxz4000015t0qgdqimaes).
 
 After creating the agent, I copied and patsted my SO question to see if it could provide an answer.
 
